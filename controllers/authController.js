@@ -38,7 +38,7 @@ exports.restrictTo = (...obj) => {
   };
 };
 
-const signToken = (res, newUser, statusCode) => {
+const signToken = (req, res, newUser, statusCode) => {
   const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES,
   });
@@ -151,7 +151,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   await new Email(user, url).sendWelcome();
 
-  signToken(res, user, 200);
+  signToken(req, res, user, 200);
 
   // const message = "welcome to our family.Hope you enjoy our application.";
 
@@ -183,7 +183,7 @@ exports.login = catchAsync(async (req, res, next) => {
       )
     );
 
-  signToken(res, user, 200);
+  signToken(req, res, user, 200);
 });
 
 exports.logout = (req, res, next) => {
@@ -248,7 +248,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
   await user.save();
 
-  signToken(res, user, 200);
+  signToken(req, res, user, 200);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -269,5 +269,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   //   message: "Password changed successfully!",
   // });
 
-  signToken(res, user, 200);
+  signToken(req, res, user, 200);
 });
