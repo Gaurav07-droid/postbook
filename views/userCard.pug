@@ -1,0 +1,14 @@
+extends base
+
+block content
+    .reviews
+        div.container-userCard
+            each user in users
+                .user-profile-card
+                    img.user-avatar(src=`/img/userProfile/default.jpg`, alt="user profile", height="150px", width="150px")
+                    h1.user-nameContainer= user.username
+                    p.user-about= user.about
+                    |
+                    a.viewProfile(href=`/api/v1/user/${user.id}`) viewProfile
+                    button.btn-delete-user(data-userid= user.id) Delete
+

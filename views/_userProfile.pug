@@ -1,0 +1,22 @@
+block content
+    .container.mt-4.mb-4.p-3.d-flex.justify-content-center
+        .card.p-4
+            .image.d-flex.flex-column.justify-content-center.align-items-center
+                button.btn.btn-secondary
+                    img(src=`/img/userProfile/${user.profileImage}`, height="100", width="100" )
+                span.name.mt-3= user.name
+                span.idd= `${user.username}`    
+                    span
+                        i.fa.fa-copy
+                .d-flex.flex-row.justify-content-center.align-items-center.mt-3
+                    span.follow Followers
+                        span.number= user.followers
+                        i.fa.fa-copy
+                    span.follow Following
+                        span.number= user.followings
+                .text.mt-3
+                    span= user.about
+                        br
+                        br
+                a.edit-profile(href='/api/v1/update-profile') EditProfile
+

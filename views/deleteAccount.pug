@@ -1,0 +1,10 @@
+extends base
+
+block content
+    .line &nbsp;    
+        .user-view__form-container
+            h2.heading-secondary.ma-bt-md#warning If you want to Delete your account then please click on the red button below and this will delete your account permanently and if not,then go back to the application. Thank you!
+            h2.heading-secondary.ma-bt-md#caution Delete all your posts before deleting your account
+            form.form.form-user-settings
+                .form__group.right
+                    button.btn.btn--small.deleteAccount(id='DeleteAccount' data-userid=user.id) ⛔ Delete my account    

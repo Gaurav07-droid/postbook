@@ -1,0 +1,17 @@
+header.header 
+    nav.nav.nav--tours
+        if user
+            a.nav__el(href='/api/v1/home') POSTBOOK
+        else
+            a.nav__el(href='/api/v1/login') POSTBOOK
+    .header__logo
+        //- img(src='/img/OnlypostLogo.png' alt='PB-logo' href='/post' width="250px" height="250pxpx")
+    nav.nav.nav--user
+        if user
+            btn.nav__el.nav__el--logout#logout Log out
+            a.nav__el(href='/api/v1/me')
+                img.nav__user-img(src=`/img/userProfile/${user.profileImage}` alt='User photo')
+                span= user.username.includes(' ')?user.username.split(' ')[0]:user.username
+        else
+            a.nav__el(href='/api/v1/login') Log in
+            a.nav__el.nav__el--cta(href='/api/v1/signup') Sign up

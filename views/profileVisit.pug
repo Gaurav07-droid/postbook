@@ -1,0 +1,27 @@
+extends base
+
+block content
+    .container.mt-4.mb-4.p-3.d-flex.justify-content-center
+        .card.p-4
+            .image.d-flex.flex-column.justify-content-center.align-items-center
+                button.btn.btn-secondary
+                    img(src=`/img/userProfile/${userClicked.profileImage}`, height="100", width="100" )
+                span.name.mt-3= userClicked.name
+                span.idd= `${userClicked.username}`    
+                    span
+                        i.fa.fa-copy
+                .d-flex.flex-row.justify-content-center.align-items-center.mt-3
+                    a.follow Followers
+                        span.number(href="/api/v1/my-followers")= userClicked.followers
+                        i.fa.fa-copy
+                    span.follow Following
+                        span.number= userClicked.followings
+                .text.mt-3
+                    span= userClicked.about
+                        br
+                        br
+                        br
+                div.btns-container
+                    button.btn-follow(data-userid=userClicked.id data-username=userClicked.username) Follow                    
+                    button.btn-unfollow(data-userid=userClicked.id data-username=userClicked.username) Unfollow
+

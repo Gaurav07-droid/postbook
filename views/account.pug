@@ -1,0 +1,54 @@
+extends base
+
+mixin navigation(link,text)
+    li.side-nav 
+        a(href=`${link}`)
+            |#{text}
+
+mixin adminNav(who,link,icon,text)
+    h5.admin-nav__heading #{who}
+        ul.side-nav
+            li
+                a(href=`${link}`)
+                    svg
+                        use(xlink:href=`img/icons.svg#icon-${icon}`)
+                    | Manage Restaurants
+
+block content
+    main.main
+        .user-view
+            nav.user-view__menu
+                ul.side-nav
+                    +navigation('/api/v1/my-posts','My posts')
+                    +navigation('/api/v1/my-followers','My followers')
+                    +navigation('/api/v1/my-followings','My followings')
+                    +navigation('/api/v1/update-profile','Update my profile')
+                    +navigation('/api/v1/change-password','Change password')
+                    +navigation('/api/v1/delete-account','Delete my account')
+
+                if user.role==='admin'
+                    .admin-nav
+                        h5.admin-nav__heading Admin
+                        ul.side-nav
+                            li
+                                a(href='/api/v1/manage-posts')
+                                    | Manage posts
+                            li
+                                a(href='/api/v1/manage-users')
+                                    | Manage users
+
+                //- if user.role==='user'
+                //-     .admin-nav
+                //-         h5.admin-nav__heading Owner
+                //-         ul.side-nav
+                //-             li
+                //-                 a(href='#')
+                //-                     svg
+                //-                         use(xlink:href='img/icons.svg#icon-map')
+                //-                     | Statistics
+                //-             li
+                //-                 a(href='#')
+                //-                     svg
+                //-                         use(xlink:href='img/icons.svg#icon-star')
+                //-                     | Manage reviews
+            include _userProfile.pug

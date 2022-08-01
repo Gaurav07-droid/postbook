@@ -1,0 +1,6 @@
+.CreatePost-container
+    form#post-create.form-create-post
+        textarea#createPost.descrip(name="postdescription", cols="30", rows="4" maxLength=90 form='post-create' placeholder="write something about your post( max characters 90)")
+        input#photo(class="form__upload" type="file",accept="image/*" name="photo" for='image' required)
+        label(class="post_upload", for="photo" required) upload photo
+        button.btn-post Post

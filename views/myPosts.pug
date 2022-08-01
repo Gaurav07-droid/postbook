@@ -1,0 +1,18 @@
+extends base
+
+block content
+    .reviews
+        div.container-body    
+            each post in posts 
+                .mypost-container
+                    h1.user-name
+                        img.avatar-user(src=`/img/userProfile/${post.user.profileImage}`, alt="avatar")
+                        button.mypost-username= post.user.username
+                    img.post-user(src=`/img/usersPost/${post.image[0]}`, alt="Car", style="width: 100%")
+                    p.post-descrption= post.description
+                    button.like-btn(data-postId=`${post.id}`) like(#{post.likes})
+                
+                    if post.visible===true
+                        button.delete-post(data-postId=`${post.id}` ) Delete Post
+                    else    
+                        button.delete-post#delpost-Admin(data-postId=`${post.id}` ) Delete Permanent

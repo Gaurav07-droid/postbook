@@ -1,0 +1,9 @@
+extends base
+
+block content
+    each comment in comments
+        ul.comments-container
+            li.username-comments
+                image.userPic-comments(src=`/img/userProfile/${comment.user.profileImage}`, alt="userphoto")
+                | #{comment.user.username}
+            li.comment-text= comment.comment

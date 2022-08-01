@@ -1,0 +1,13 @@
+mixin navigation(link,icon,text)
+    li.side-nav 
+        a(href=`${link}`)
+            svg
+                use(xlink:href=`img/icons.svg#icon-${icon}`)
+            |#{text}
+block content
+        nav.home-view__menu
+            ul.side-nav#homeNav
+                //- +navigation('#','settings','Settings')
+                +navigation('/api/v1/my-posts','briefcase','My posts')
+                +navigation('/api/v1/my-followers','star','My followers')
+                //- +navigation('#','credit-card','Delete my account')

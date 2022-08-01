@@ -1,0 +1,14 @@
+extends base
+
+block content
+    .reviews
+        div.container-userCard
+            each follower in followers
+                .user-profile-card
+                    .profile-follower
+                        img.user-avatar(src=`/img/userProfile/${follower.user.profileImage}`, alt="user profile", height="150px", width="150px")
+                        h1.user-nameContainer(href='/')= follower.user.username
+                        h1.user-about= follower.user.about
+                        a#btn_following(href=`/api/v1/user/${follower.user._id}` ) view profile
+
+                    //- button.btn-delete-user(data-userid= user.id) Delete

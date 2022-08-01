@@ -1,0 +1,22 @@
+extends base
+
+block content
+        include _createPost.pug
+        each post in allPosts 
+            .Post-container
+                header.post-header
+                    h1.user-name
+                        img.avatar-user(src=`/img/userProfile/${post.user.profileImage}`, alt="avatar")
+                        a.user-name#btn_username(href=`/api/v1/user/${post.user._id}` )= post.user.username
+                        //- button.user-follow#btn_follow(data-userid=`${post.user._id}`) +Follow
+                img.post-user(src=`/img/usersPost/${post.image[0]}`, alt="Car", style="width: 100%")
+                p.post-descrption= post.description
+                br
+                div.buttons-container
+                button.like-btn(data-postId=`${post.id}`) ❤(#{post.likes})
+                button.unlike-btn(data-postId=`${post.id}`) 👎
+                a.comment-btn(href=`/api/v1/post/${post.id}/comments`)  show comments
+                include _createComment.pug
+ 
+                    
+                
