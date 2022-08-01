@@ -61,7 +61,7 @@ app.use(xss());
 //compression
 app.use(compression());
 
-app.use("/", viewRouter);
+app.use("/api/v1/", viewRouter);
 app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/comments", commentRouter);
 app.use("/api/v1/likes", likeRouter);
