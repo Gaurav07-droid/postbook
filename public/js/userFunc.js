@@ -4,7 +4,7 @@ import { showAlert } from "./alert.js";
 export const deleteUser = async (userId) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/users/${userId}`,
+      url: `/api/v1/users/${userId}`,
       method: "DELETE",
     });
 
@@ -23,7 +23,7 @@ export const deleteUser = async (userId) => {
 export const deleteMe = async () => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/users/deleteMe`,
+      url: `/api/v1/users/deleteMe`,
       method: "PATCH",
     });
 
@@ -43,7 +43,7 @@ export const deleteMe = async () => {
 export const removeProfile = async () => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/users/removeProfile`,
+      url: `/api/v1/users/removeProfile`,
       method: "PATCH",
     });
 
@@ -67,7 +67,7 @@ export const removeProfile = async () => {
 export const followUser = async (userId, userName) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/users/${userId}/follow`,
+      url: `/api/v1/users/${userId}/follow`,
       method: "POST",
     });
 
@@ -88,14 +88,14 @@ export const followUser = async (userId, userName) => {
 export const unfollowUser = async (userId, userName) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/users/${userId}/follow`,
+      url: `/api/v1/users/${userId}/follow`,
       method: "GET",
     });
 
     const followingId = res.data.data[0]._id;
 
     const res2 = await axios({
-      url: `http://127.0.0.1:3000/api/v1/follow/${followingId}`,
+      url: `/api/v1/follow/${followingId}`,
       method: "DELETE",
     });
 
@@ -109,7 +109,7 @@ export const unfollowUser = async (userId, userName) => {
       showAlert("error", "You can only unfollow a user once");
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     showAlert("error", `Opps! something went wrong .Try again later.`);
   }
 };

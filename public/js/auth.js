@@ -5,7 +5,7 @@ export const login = async (username, password) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:3000/api/v1/users/login",
+      url: "/api/v1/users/login",
       data: {
         username,
         password,
@@ -28,7 +28,7 @@ exports.logout = async () => {
   try {
     const res = await axios({
       method: "GET",
-      url: "http://127.0.0.1:3000/api/v1/users/logout",
+      url: "/api/v1/users/logout",
     });
 
     if (res.data.status === "success") {
@@ -50,7 +50,7 @@ export const passwordChange = async (
   try {
     const res = await axios({
       method: "PATCH",
-      url: "http://127.0.0.1:3000/api/v1/users/updatePassword",
+      url: "/api/v1/users/updatePassword",
       data: {
         passwordCurrent,
         password,

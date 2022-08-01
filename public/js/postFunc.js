@@ -4,7 +4,7 @@ import { showAlert } from "./alert.js";
 export const createPost = async (data) => {
   try {
     const res = await axios({
-      url: "http://127.0.0.1:3000/api/v1/posts",
+      url: "/api/v1/posts",
       method: "POST",
       data,
     });
@@ -23,7 +23,7 @@ export const createPost = async (data) => {
 export const likePost = async (postId) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/posts/${postId}/likes`,
+      url: `/api/v1/posts/${postId}/likes`,
       method: "POST",
     });
 
@@ -36,7 +36,7 @@ export const likePost = async (postId) => {
 export const unlikePost = async (postId) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/likes/${postId}`,
+      url: `/api/v1/likes/${postId}`,
       method: "DELETE",
     });
     location.reload(true);
@@ -48,7 +48,7 @@ export const unlikePost = async (postId) => {
 export const deletePost = async (postId) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/posts/${postId}`,
+      url: `/api/v1/posts/${postId}`,
       method: "PATCH",
     });
 
@@ -67,7 +67,7 @@ export const deletePost = async (postId) => {
 export const deletePostAdmin = async (postId) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/posts/${postId}`,
+      url: `/api/v1/posts/${postId}`,
       method: "DELETE",
     });
 
@@ -86,14 +86,14 @@ export const deletePostAdmin = async (postId) => {
 export const createComment = async (comment, postId) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:3000/api/v1/posts/${postId}/comments`,
+      url: `/api/v1/posts/${postId}/comments`,
       method: "POST",
       data: {
         comment,
       },
     });
 
-    console.log(res);
+    // console.log(res);
     if (res.data.status === "success") {
       showAlert("success", "Commented successfully!");
 

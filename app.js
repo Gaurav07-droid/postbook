@@ -4,10 +4,11 @@ const morgan = require("morgan");
 
 const rateLimiter = require("express-rate-limit");
 const helmet = require("helmet");
-const hpp = require("hpp");
+// const hpp = require("hpp");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 
 const postRouter = require("./routes/postRoutes");
 const commentRouter = require("./routes/commentRoutes");
@@ -49,11 +50,16 @@ app.use("/api", limiter);
 //Setting various HTTP headers.
 // app.use(helmet());
 
+// app.use(hpp);
+
 //Data sanitize againts noSql queries
 app.use(mongoSanitize());
 
 //Data sanitize against XSS
 app.use(xss());
+
+//compression
+app.use(compression());
 
 app.use("/", viewRouter);
 app.use("/api/v1/posts", postRouter);

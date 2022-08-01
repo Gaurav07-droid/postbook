@@ -4,7 +4,7 @@ import { showAlert } from "./alert.js";
 export const updateMe = async (data) => {
   try {
     const res = await axios({
-      url: "http://127.0.0.1:3000/api/v1/users/updateMe",
+      url: "/api/v1/users/updateMe",
       method: "PATCH",
       data,
     });
@@ -16,7 +16,7 @@ export const updateMe = async (data) => {
       }, 1500);
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     showAlert("error", err);
   }
 };

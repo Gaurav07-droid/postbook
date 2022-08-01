@@ -49,7 +49,7 @@ followingSchema.statics.calcTotalfollowers = async function (userId) {
   ]);
 
   const user = await User.findById(userId);
-  console.log(stats[0], stats[1]);
+  // console.log(stats[0], stats[1]);
 
   if (stats.length > 0) {
     await User.findByIdAndUpdate(userId, {
