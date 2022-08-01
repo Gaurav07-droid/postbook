@@ -8,22 +8,22 @@ const router = express.Router();
 router.use(authController.isLoggedIn);
 
 router.get("/", viewsController.getLogin);
-router.get("/login", viewsController.getLogin);
-router.get("/signup", viewsController.getSignup);
-router.get("/home", viewsController.getPost);
+router.get("/api/v1/login", viewsController.getLogin);
+router.get("/api/v1/signup", viewsController.getSignup);
+router.get("/api/v1/home", viewsController.getPost);
 
-router.get("/me", viewsController.getMe);
-router.get("/my-posts", viewsController.getMyPosts);
-router.get("/change-password", viewsController.getChangePassword);
-router.get("/update-profile", viewsController.updateProfile);
+router.get("/api/v1/me", viewsController.getMe);
+router.get("/api/v1/my-posts", viewsController.getMyPosts);
+router.get("/api/v1/change-password", viewsController.getChangePassword);
+router.get("/api/v1/update-profile", viewsController.updateProfile);
 
-router.get("/user/:id", viewsController.getUser);
-router.get("/post/:id/comments", viewsController.getAllComments);
+router.get("/api/v1/user/:id", viewsController.getUser);
+router.get("/api/v1/post/:id/comments", viewsController.getAllComments);
 
-router.get("/manage-posts", viewsController.manageAllPosts);
-router.get("/manage-users", viewsController.manageAllUsers);
-router.get("/delete-account", viewsController.getDeleteUserAcc);
-router.get("/my-followers", viewsController.getMyFollowers);
-router.get("/my-followings", viewsController.getMyFollowings);
+router.get("/api/v1/manage-posts", viewsController.manageAllPosts);
+router.get("/api/v1/manage-users", viewsController.manageAllUsers);
+router.get("/api/v1/delete-account", viewsController.getDeleteUserAcc);
+router.get("/api/v1/my-followers", viewsController.getMyFollowers);
+router.get("/api/v1/my-followings", viewsController.getMyFollowings);
 
 module.exports = router;
