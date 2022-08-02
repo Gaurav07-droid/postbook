@@ -4743,7 +4743,7 @@ var signup = /*#__PURE__*/function () {
             _context4.prev = 0;
             _context4.next = 3;
             return (0, _axios.default)({
-              url: "http://127.0.0.1:3000/api/v1/users/signup",
+              url: "/api/v1/users/signup",
               method: "POST",
               data: {
                 username: username,
