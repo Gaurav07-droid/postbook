@@ -45,12 +45,12 @@ exports.getMyPosts = async (req, res, next) => {
       title: "Not found",
       data: "posts",
     });
+  } else {
+    res.status(200).render("myPosts", {
+      title: "My posts",
+      posts,
+    });
   }
-
-  res.status(200).render("myPosts", {
-    title: "My posts",
-    posts,
-  });
 };
 
 exports.manageAllPosts = async (req, res, next) => {
@@ -104,12 +104,12 @@ exports.getMyFollowers = async (req, res, next) => {
       title: "Not found",
       data: "followers",
     });
+  } else {
+    res.status(200).render("getFollower", {
+      title: "My followers",
+      followers,
+    });
   }
-
-  res.status(200).render("getFollower", {
-    title: "My followers",
-    followers,
-  });
 };
 
 exports.getMyFollowings = async (req, res, next) => {
@@ -129,12 +129,12 @@ exports.getMyFollowings = async (req, res, next) => {
       title: "Not found",
       data: "followings",
     });
+  } else {
+    res.status(200).render("getFollowing", {
+      title: "My followings",
+      followings,
+    });
   }
-
-  res.status(200).render("getFollowing", {
-    title: "My followings",
-    followings,
-  });
 };
 
 exports.getUser = async (req, res, next) => {
@@ -146,12 +146,12 @@ exports.getUser = async (req, res, next) => {
       title: "Not found",
       data: "user",
     });
+  } else {
+    res.status(200).render("profileVisit", {
+      title: `${userClicked.username}`,
+      userClicked,
+    });
   }
-
-  res.status(200).render("profileVisit", {
-    title: `${userClicked.username}`,
-    userClicked,
-  });
 };
 
 exports.getAllComments = async (req, res, next) => {
@@ -167,12 +167,12 @@ exports.getAllComments = async (req, res, next) => {
       title: "No Comments",
       data: "comments",
     });
+  } else {
+    res.status(200).render("comments", {
+      title: "Comments",
+      comments,
+    });
   }
-
-  res.status(200).render("comments", {
-    title: "Comments",
-    comments,
-  });
 };
 
 exports.getErrorPage = async (req, res, next) => {

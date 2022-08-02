@@ -1,4 +1,4 @@
-import { login, logout, passwordChange } from "./auth";
+import { signup, login, logout, passwordChange } from "./auth";
 import {
   createPost,
   likePost,
@@ -16,6 +16,7 @@ import {
 } from "./userFunc";
 import { updateMe } from "./updateMe";
 
+const formSignup = document.querySelector(".form_signup");
 const loginForm = document.querySelector(".form_login");
 const formCreatePost = document.querySelector(".form-create-post");
 const formUpdateMe = document.querySelector(".form-user-data");
@@ -33,12 +34,28 @@ const btnDeleteMe = document.getElementById("DeleteAccount");
 const btnFollow = document.querySelector(".btn-follow");
 const btnUnfollow = document.querySelector(".btn-unfollow");
 
+const userName = document.getElementById("user-name");
+const name = document.getElementById("name");
+const email = document.getElementById("email");
 const username = document.getElementById("username");
 const password = document.getElementById("password");
 const curPassword = document.getElementById("password-current");
 const confPassword = document.getElementById("password-confirm");
 const cmmntText = document.querySelectorAll(".cmmnt");
 // const comment = document.ge(loginForm);
+
+if (formSignup)
+  formSignup.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    signup(
+      userName.value,
+      name.value,
+      email.value,
+      password.value,
+      confPassword.value
+    );
+  });
 
 if (loginForm)
   loginForm.addEventListener("submit", (e) => {

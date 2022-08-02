@@ -80,3 +80,38 @@ export const passwordChange = async (
     }, 1500);
   }
 };
+
+export const signup = async (
+  username,
+  name,
+  email,
+  password,
+  passwordConfirm
+) => {
+  try {
+    const res = await axios({
+      url: "http://127.0.0.1:3000/api/v1/users/signup",
+      method: "POST",
+      data: {
+        username,
+        name,
+        email,
+        password,
+        passwordConfirm,
+      },
+    });
+
+    console.log(res);
+
+    if (res.data.status === "success") {
+      showAlert("success", "Account created successfully!");
+
+      window.setTimeout(() => {
+        location.assign("/api/v1/home");
+      }, 1500);
+    }
+  } catch (err) {
+    // console.log(err);
+    showAlert("error", "Something went wrong!Try again later");
+  }
+};

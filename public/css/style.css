@@ -1885,7 +1885,7 @@ a:hover {
   font-size: 22px;
   font-weight: bold;
   color: white;
-  margin-left: 210px;
+  margin-left: 190px;
   display: grid;
 }
 
@@ -1893,7 +1893,7 @@ a:hover {
   font-size: 14px;
   font-weight: 600;
   color: white;
-  margin-left: 210px;
+  margin-left: 220px;
   cursor: auto;
 }
 
@@ -1955,6 +1955,13 @@ a:hover {
   font-weight: bold;
 }
 
+#my-about {
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 2px;
+  width: 500px;
+}
+
 .icons i {
   font-size: 19px;
 }
@@ -2007,6 +2014,13 @@ hr .new1 {
   /* padding-right: 55px; */
 }
 
+#signup {
+  height: 40px;
+  border-radius: 10px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
 .userPic-comments {
   margin-top: 4px;
   margin-left: 5px;
@@ -2024,6 +2038,10 @@ hr .new1 {
   background-color: #1060a6;
   width: 500px;
   color: white;
+}
+
+#follorwings {
+  margin-top: 25px;
 }
 
 .comment-text {
