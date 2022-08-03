@@ -3,7 +3,11 @@ const express = require("express");
 const viewsController = require("../controllers/viewsController");
 const authController = require("../controllers/authController");
 
+const app = express();
 const router = express.Router();
+
+router.get("/api/v1/forgot-password", viewsController.getForgotPassword);
+router.get("/api/v1/reset-password", viewsController.getResetPassword);
 
 router.use(authController.isLoggedIn);
 

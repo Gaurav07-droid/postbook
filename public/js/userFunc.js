@@ -1,6 +1,26 @@
 import axios from "axios";
 import { showAlert } from "./alert.js";
 
+export const updateMe = async (data) => {
+  try {
+    const res = await axios({
+      url: "/api/v1/users/updateMe",
+      method: "PATCH",
+      data,
+    });
+
+    if (res.data.status === "success") {
+      showAlert("success", "Data updated successfully!");
+      window.setTimeout(() => {
+        location.assign("/api/v1/me");
+      }, 1500);
+    }
+  } catch (err) {
+    // console.log(err);
+    showAlert("error", err);
+  }
+};
+
 export const deleteUser = async (userId) => {
   try {
     const res = await axios({
@@ -111,5 +131,53 @@ export const unfollowUser = async (userId, userName) => {
   } catch (err) {
     // console.log(err);
     showAlert("error", `Opps! something went wrong .Try again later.`);
+  }
+};
+
+export const forgotPassword = async (email) => {
+  try {
+    const res = await axios({
+      url: "/api/v1/users/forgotPassword",
+      method: "POST",
+      data: {
+        email,
+      },
+    });
+
+    // console.log(res);
+
+    if (res.data.status === "success") {
+      showAlert("success", res.data.message);
+
+      window.setTimeout(() => {
+        location.assign("/api/v1/reset-password");
+      }, 1500);
+    }
+  } catch (err) {
+    console.log(err);
+    showAlert("error", err.response.data.message);
+  }
+};
+
+export const resetPassword = async (token, password, passwordConfirm) => {
+  try {
+    const res = await axios({
+      url: `/api/v1/users/resetPassword/${token}`,
+      method: "PATCH",
+      data: {
+        password,
+        passwordConfirm,
+      },
+    });
+
+    if (res.data.status === "success") {
+      showAlert("success", "Password reseted sucessfully");
+
+      window.setTimeout(() => {
+        location.assign("/api/v1/home");
+      }, 1500);
+    }
+  } catch (err) {
+    showAlert("error", err.response.data.message);
   }
 };

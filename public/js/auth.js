@@ -20,7 +20,8 @@ export const login = async (username, password) => {
       }, 1500);
     }
   } catch (err) {
-    showAlert("error", "Incorrect username or password!try again");
+    console.log(err);
+    showAlert("error", err.response.data.message);
   }
 };
 
@@ -90,7 +91,7 @@ export const signup = async (
 ) => {
   try {
     const res = await axios({
-      url: "/api/v1/users/signup",
+      url: "http://127.0.0.1:3000/api/v1/users/signup",
       method: "POST",
       data: {
         username,
@@ -111,7 +112,6 @@ export const signup = async (
       }, 1500);
     }
   } catch (err) {
-    // console.log(err);
-    showAlert("error", "Something went wrong!Try again later");
+    showAlert("error", err.response.data.message);
   }
 };

@@ -41,12 +41,12 @@ exports.getMyPosts = async (req, res, next) => {
   const posts = await Post.find({ user: req.user.id, visible: true });
 
   if (posts.length == 0) {
-    res.status(404).render("error", {
+    return res.status(404).render("error", {
       title: "Not found",
       data: "posts",
     });
   } else {
-    res.status(200).render("myPosts", {
+    return res.status(200).render("myPosts", {
       title: "My posts",
       posts,
     });
@@ -100,12 +100,12 @@ exports.getMyFollowers = async (req, res, next) => {
   const followers = await Following.find(filter);
 
   if (followers.length <= 0) {
-    res.status(404).render("error", {
+    return res.status(404).render("error", {
       title: "Not found",
       data: "followers",
     });
   } else {
-    res.status(200).render("getFollower", {
+    return res.status(200).render("getFollower", {
       title: "My followers",
       followers,
     });
@@ -125,12 +125,12 @@ exports.getMyFollowings = async (req, res, next) => {
   // const followings = await doc.following;
 
   if (followings.length == 0) {
-    res.status(404).render("error", {
+    return res.status(404).render("error", {
       title: "Not found",
       data: "followings",
     });
   } else {
-    res.status(200).render("getFollowing", {
+    return res.status(200).render("getFollowing", {
       title: "My followings",
       followings,
     });
@@ -142,12 +142,12 @@ exports.getUser = async (req, res, next) => {
   const userClicked = await User.findById(id);
 
   if (!userClicked) {
-    res.status(200).render("error", {
+    return res.status(200).render("error", {
       title: "Not found",
       data: "user",
     });
   } else {
-    res.status(200).render("profileVisit", {
+    return res.status(200).render("profileVisit", {
       title: `${userClicked.username}`,
       userClicked,
     });
@@ -163,19 +163,31 @@ exports.getAllComments = async (req, res, next) => {
     .select("-__v -post");
 
   if (comments.length === 0) {
-    res.status(200).render("error", {
+    return res.status(200).render("error", {
       title: "No Comments",
       data: "comments",
     });
   } else {
-    res.status(200).render("comments", {
+    return res.status(200).render("comments", {
       title: "Comments",
       comments,
     });
   }
 };
 
-exports.getErrorPage = async (req, res, next) => {
+exports.getForgotPassword = (req, res, next) => {
+  res.status(200).render("forgotpass", {
+    title: "Forgot password",
+  });
+};
+
+exports.getResetPassword = (req, res, next) => {
+  res.status(200).render("resetpass", {
+    title: "Forgot password",
+  });
+};
+
+exports.getError = (req, res, next) => {
   res.status(200).render("error", {
     title: "Not found",
   });

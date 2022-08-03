@@ -3,7 +3,6 @@ const User = require("../models/userModel");
 
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
-const { findByIdAndUpdate } = require("../models/followingModel");
 
 exports.settingDefaultIds = (req, res, next) => {
   if (!req.body.user) req.body.user = req.user.id;

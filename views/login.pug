@@ -1,10 +1,9 @@
 extends base
 
 block content
-
     main.main
         .login-form
-            img.postBook-logo(src=`/img/OnlypostOnlyLogo.png`, alt="avatar" width="250px" height="250px")
+            img.postBook-logo(src=`/public/img/OnlypostOnlyLogo.png`, alt="avatar" width="250px" height="250px")
             h2.heading-secondary.ma-bt-lg Log into your account
             form.form_login
                 .form__group
@@ -15,4 +14,5 @@ block content
                     input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
                 .form__group
                     button.btn.btn--green#btn-login Login
+                    a#forgotPassword(href='/api/v1/forgot-password') forgot password?
                 

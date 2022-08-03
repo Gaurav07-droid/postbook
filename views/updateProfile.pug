@@ -23,7 +23,7 @@ block content
                 else
                     .form__group.ma-bt    
                         label.form__label(for='about') About
-                        input#about.form__input(type='text', value='write something about you max(60 characters)')
+                        input#about.form__input(type='text', placeholder='write something about you (max 60 characters)')
                 .form__group.form__photo-upload
                     img.form__user-photo(src=`/img/userProfile/${user.profileImage}`, alt='User photo')
                     input.form__upload(type='file',accept='image/*',id='photo',name='photo')

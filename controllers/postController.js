@@ -38,7 +38,7 @@ exports.resizePostImages = catchAsync(async (req, res, next) => {
         .resize(2000, 1333)
         .toFormat("jpeg")
         .jpeg({ quality: 90 })
-        .toFile(`public/img/usersPost/${filename}`);
+        .toFile(`/img/usersPost/${filename}`);
 
       req.body.image.push(filename);
     })

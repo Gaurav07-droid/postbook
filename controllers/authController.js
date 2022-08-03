@@ -172,7 +172,7 @@ exports.login = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ username }).select("+password");
 
   if (!user || !(await user.correctPassword(password, user.password))) {
-    return next(new AppError("Incorrect email or password! Try again", 401));
+    return next(new AppError(" Incorrect email or password! Try again", 401));
   }
 
   if (!user.active)
@@ -222,7 +222,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     user.passwordResetToken = undefined;
     user.passwordResetTokenExpires = undefined;
     await user.save({ validateBeforeSave: false });
-    console.log(err);
+    // console.log(err);
     return next(
       new AppError("There was an error sending email!Try again later", 500)
     );
@@ -240,7 +240,10 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     passwordResetTokenExpires: { $gt: Date.now() },
   });
 
-  if (!user) return next(new AppError("Invalid token or has expired", 400));
+  if (!user)
+    return next(
+      new AppError("Invalid token or your token has been expired", 400)
+    );
 
   user.password = req.body.password;
   user.passwordConfirm = req.body.passwordConfirm;

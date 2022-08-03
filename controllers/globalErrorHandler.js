@@ -7,9 +7,10 @@ const handleCastError = (err) => {
 
 const handleDuplicateError = (err) => {
   const value = err.message.match(/(["'])(\\?.)*?\1/)[0];
-
   return new AppError(
-    `Duplicate field value:/${value.split('"')[1]}/. Please use another value!`,
+    `This field value:/${
+      value.split('"')[1]
+    }/ is already used. Please try another one!`,
     400
   );
 };
@@ -59,8 +60,10 @@ const globalErrrorHandler = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
 
+  // console.log(process.env.NODE_ENV);
+
   if (process.env.NODE_ENV === "development") {
-    sendErrorDev(err, res);
+    return sendErrorDev(err, res);
   } else if (process.env.NODE_ENV === "production") {
     if (err.name === "CastError") err = handleCastError(err);
     if (err.code === 11000) err = handleDuplicateError(err);
@@ -68,7 +71,7 @@ const globalErrrorHandler = (err, req, res, next) => {
     if (err.name === "JsonWebTokenError") err = handleJWTError();
     if (err.name === "TokenExpiredError") err = handleJWTExpireError();
 
-    sendErrorProd(err, res);
+    return sendErrorProd(err, res);
   }
 };
 

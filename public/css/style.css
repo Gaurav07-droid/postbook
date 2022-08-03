@@ -1297,7 +1297,7 @@ body {
 }
 
 .login-form {
-  height: 660px;
+  height: 680px;
   margin: 0 auto;
   max-width: 55rem;
   background-color: #fff;
@@ -1499,11 +1499,11 @@ a:hover {
   margin-bottom: 10px;
   /* width: 150px; */
   height: 40px;
-  width: 150px;
+  width: 350px;
   display: flex;
   background-color: #1060a6;
   text-decoration: none;
-  margin-top: 3px;
+  margin-top: 5px;
   border-radius: 4px;
   margin-left: 5px;
 }
@@ -2010,6 +2010,7 @@ hr .new1 {
   border-radius: 10px;
   margin-left: 5px;
   cursor: pointer;
+  margin-bottom: 5px;
 
   /* padding-right: 55px; */
 }
@@ -2040,7 +2041,7 @@ hr .new1 {
   color: white;
 }
 
-#follorwings {
+#followings {
   margin-top: 25px;
 }
 
@@ -2054,4 +2055,35 @@ hr .new1 {
   align-self: center;
   margin-top: 25px;
   font-size: 25px;
+}
+
+#forgotPassword {
+  cursor: pointer;
+  margin-left: 150px;
+  font-size: 15px;
+  height: 25px;
+  margin-top: 50px;
+}
+
+#resetPassword {
+  cursor: pointer;
+  margin-left: 190px;
+  font-size: 20px;
+  height: 25px;
+  margin-top: 50px;
+}
+
+#passResetBtn {
+  height: 40px;
+  border-radius: 10px;
+  /* margin-left: 5px; */
+  margin-right: 500px;
+  cursor: pointer;
+}
+
+#getToken {
+  height: 40px;
+  border-radius: 10px;
+  /* margin-left: 5px; */
+  cursor: pointer;
 }

@@ -69,11 +69,10 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/follow", followingRouter);
 
 app.all("*", (req, res, next) => {
-  res.status(404).render("error", {
-    title: "Not found",
+  res.render("error", {
+    title: "not found",
   });
-
-  next(new AppError(`Couldn't found ${req.originalUrl} on this server!`, 404));
+  next(new AppError(`Couldn't found ${req.originalUrl} on  his server!`, 404));
 });
 
 app.use(globalErrorHandler);

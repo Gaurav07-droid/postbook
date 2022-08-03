@@ -13,14 +13,17 @@ import {
   removeProfile,
   followUser,
   unfollowUser,
+  forgotPassword,
+  resetPassword,
+  updateMe,
 } from "./userFunc";
-import { updateMe } from "./updateMe";
 
 const formSignup = document.querySelector(".form_signup");
 const loginForm = document.querySelector(".form_login");
 const formCreatePost = document.querySelector(".form-create-post");
 const formUpdateMe = document.querySelector(".form-user-data");
 const formPasswordChange = document.querySelector(".user-view__form-container");
+const resetPassForm = document.getElementById("resetpass-form");
 
 const btnLogout = document.getElementById("logout");
 const btnLike = document.querySelectorAll(".like-btn");
@@ -29,6 +32,7 @@ const btnDeletePost = document.querySelectorAll(".delete-post");
 const btnDelPost = document.querySelectorAll("#delpost-Admin");
 const btnRemoveProfile = document.getElementById("removeprofile");
 const btnCmmnt = document.querySelectorAll("#cmmnt-btn");
+const btnGetToken = document.getElementById("getToken");
 const btnDeleteUser = document.querySelectorAll(".btn-delete-user");
 const btnDeleteMe = document.getElementById("DeleteAccount");
 const btnFollow = document.querySelector(".btn-follow");
@@ -42,6 +46,7 @@ const password = document.getElementById("password");
 const curPassword = document.getElementById("password-current");
 const confPassword = document.getElementById("password-confirm");
 const cmmntText = document.querySelectorAll(".cmmnt");
+const resetToken = document.getElementById("reset-token");
 // const comment = document.ge(loginForm);
 
 if (formSignup)
@@ -196,4 +201,24 @@ if (btnUnfollow)
     const userName = e.target.dataset.username;
 
     unfollowUser(userId, userName);
+  });
+
+if (btnGetToken)
+  btnGetToken.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (email.value) {
+      forgotPassword(email.value);
+      e.target.textContent = "sending...";
+    }
+  });
+
+if (resetPassForm)
+  resetPassForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // resetPassword(resetToken.value, password.value, confPassword.value);
+    if (resetToken.value && password.value && confPassword.value) {
+      resetPassword(resetToken.value, password.value, confPassword.value);
+      e.target.textContent = "resetting...";
+    }
   });
