@@ -48,7 +48,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use("/api", limiter);
 
 //Setting various HTTP headers.
-// app.use(helmet());
+app.use(helmet());
 
 // app.use(hpp);
 
