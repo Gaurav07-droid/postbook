@@ -14,7 +14,7 @@ block content
                 br
                 div.buttons-container
                 button.like-btn(data-postId=`${post.id}`) ❤(#{post.likes})
-                button.unlike-btn(data-postId=`${post.id}`) 👎
+                button.unlike-btn(data-postId=`${post.id}`) unlike
                 a.comment-btn(href=`/api/v1/post/${post.id}/comments`)  show comments
                 include _createComment.pug
  
