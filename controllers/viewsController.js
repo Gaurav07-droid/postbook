@@ -3,6 +3,7 @@ const Post = require("../models/postsModel");
 const User = require("../models/userModel");
 const Following = require("../models/followingModel");
 const Comment = require("../models/commentModel");
+const AppError = require("../utils/appError");
 
 exports.getLogin = (req, res, next) => {
   res.status(200).render("login", {
@@ -40,13 +41,15 @@ exports.getChangePassword = (req, res, next) => {
 exports.getMyPosts = async (req, res, next) => {
   const posts = await Post.find({ user: req.user.id, visible: true });
 
-  if (posts.length == 0) {
-    return res.status(404).render("error", {
-      title: "Not found",
-      data: "posts",
-    });
+  if (posts.length === 0) {
+    return next(
+      new AppError(
+        "You didn't posted anything yet!Please post and try again",
+        404
+      )
+    );
   } else {
-    return res.status(200).render("myPosts", {
+    res.status(200).render("myPosts", {
       title: "My posts",
       posts,
     });
@@ -58,7 +61,6 @@ exports.manageAllPosts = async (req, res, next) => {
   let query = Post.find();
 
   query = query.sort("-createdAt");
-  // posts = posts.sort("-createdAt");
 
   const posts = await query;
 
@@ -100,10 +102,9 @@ exports.getMyFollowers = async (req, res, next) => {
   const followers = await Following.find(filter);
 
   if (followers.length <= 0) {
-    return res.status(404).render("error", {
-      title: "Not found",
-      data: "followers",
-    });
+    return next(
+      new AppError(" No one is following you! Please try again later", 404)
+    );
   } else {
     return res.status(200).render("getFollower", {
       title: "My followers",
@@ -125,10 +126,12 @@ exports.getMyFollowings = async (req, res, next) => {
   // const followings = await doc.following;
 
   if (followings.length == 0) {
-    return res.status(404).render("error", {
-      title: "Not found",
-      data: "followings",
-    });
+    return next(
+      new AppError(
+        "You are not following anyone! Please follow and try again later",
+        404
+      )
+    );
   } else {
     return res.status(200).render("getFollowing", {
       title: "My followings",
@@ -142,10 +145,7 @@ exports.getUser = async (req, res, next) => {
   const userClicked = await User.findById(id);
 
   if (!userClicked) {
-    return res.status(200).render("error", {
-      title: "Not found",
-      data: "user",
-    });
+    return next(new AppError("No user found!Please try again later", 404));
   } else {
     return res.status(200).render("profileVisit", {
       title: `${userClicked.username}`,
@@ -163,10 +163,9 @@ exports.getAllComments = async (req, res, next) => {
     .select("-__v -post");
 
   if (comments.length === 0) {
-    return res.status(200).render("error", {
-      title: "No Comments",
-      data: "comments",
-    });
+    return next(
+      new AppError("No comments found yet! Please try again later", 404)
+    );
   } else {
     return res.status(200).render("comments", {
       title: "Comments",
@@ -187,8 +186,9 @@ exports.getResetPassword = (req, res, next) => {
   });
 };
 
-exports.getError = (req, res, next) => {
-  res.status(200).render("error", {
-    title: "Not found",
-  });
-};
+// exports.getError = (req, res, next) => {
+//   res.status(200).render("error", {
+//     title: "Not found",
+//     data: "page",
+//   });
+// };

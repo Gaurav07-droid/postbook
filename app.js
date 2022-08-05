@@ -48,7 +48,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use("/api", limiter);
 
 //Setting various HTTP headers.
-app.use(helmet());
+// app.use(helmet());
 
 // app.use(hpp);
 
@@ -69,9 +69,6 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/follow", followingRouter);
 
 app.all("*", (req, res, next) => {
-  res.render("error", {
-    title: "not found",
-  });
   next(new AppError(`Couldn't found ${req.originalUrl} on  his server!`, 404));
 });
 

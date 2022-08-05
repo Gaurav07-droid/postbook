@@ -1,23 +1,6 @@
 extends base
 
 block content
-    if data==='comments'
-        h1.error-message Sorry! no #{data} yet !🚫
+        h1.error-message= mssg
         |
-        h2.error-message please visit again later.
-    else if data==='followers'
-        h1.error-message Oops! no followers yet !🚫
-        |
-        h2.error-message please visit again later.
-    else if data==='followings'
-        h1.error-message Oops! no followings yet !🚫
-        |
-        h2.error-message please visit again later.
-    else if data==='posts'
-        h1.error-message You does'not posted anything yet !🚫
-        |
-        h2.error-message post now with the world.
-    else if data==='page'             
-        h1.error-message Requested route not found !🚫
-        |
-        h2.error-message please try correct one ,if you know! 
+        h2.error-message 🤯🤯😥

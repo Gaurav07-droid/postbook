@@ -1,4 +1,5 @@
 import axios from "axios";
+import { __esModule } from "xss-clean/lib/xss.js";
 import { showAlert } from "./alert.js";
 
 export const login = async (username, password) => {
@@ -36,7 +37,7 @@ exports.logout = async () => {
       showAlert("success", "Logged out successfully!");
       window.setTimeout(() => {
         location.assign("/api/v1/login");
-      }, 1500);
+      }, 1000);
     }
   } catch (err) {
     showAlert("error", "Something went wrong!Try again");
@@ -102,16 +103,16 @@ export const signup = async (
       },
     });
 
-    console.log(res);
+    // console.log(res);
 
     if (res.data.status === "success") {
       showAlert("success", "Account created successfully!");
-
       window.setTimeout(() => {
         location.assign("/api/v1/home");
       }, 1500);
     }
   } catch (err) {
+    console.log(err);
     showAlert("error", err.response.data.message);
   }
 };

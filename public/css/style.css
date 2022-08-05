@@ -1802,10 +1802,13 @@ a:hover {
 }
 
 .postBook-logo {
-  margin-left: 70px;
-  margin-top: 0px;
+  margin-left: 60px;
 }
 
+.img-error {
+  align-self: center;
+  display: flex;
+}
 .remove-Profile {
   margin-left: 80px;
   cursor: pointer;
@@ -2053,8 +2056,9 @@ hr .new1 {
 
 .error-message {
   align-self: center;
-  margin-top: 25px;
-  font-size: 25px;
+  margin-top: 55px;
+  font-size: 35px;
+  color: #1060a6;
 }
 
 #forgotPassword {
