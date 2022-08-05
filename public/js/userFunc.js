@@ -11,9 +11,9 @@ export const updateMe = async (data) => {
 
     if (res.data.status === "success") {
       showAlert("success", "Data updated successfully!");
-      //   window.setTimeout(() => {
-      //     location.assign("/api/v1/me");
-      //   }, 1500);
+      window.setTimeout(() => {
+        location.assign("/api/v1/me");
+      }, 1500);
     }
   } catch (err) {
     // console.log(err);
