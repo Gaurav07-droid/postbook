@@ -54,7 +54,7 @@ app.options("*", cors());
 //Setting various HTTP headers.
 // app.use(helmet());
 
-app.use(hpp);
+// app.use(hpp);
 
 //Data sanitize againts noSql queries
 app.use(mongoSanitize());
