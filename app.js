@@ -4,7 +4,8 @@ const morgan = require("morgan");
 
 const rateLimiter = require("express-rate-limit");
 const helmet = require("helmet");
-// const hpp = require("hpp");
+const hpp = require("hpp");
+const cors = require("cors");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const cookieParser = require("cookie-parser");
@@ -47,10 +48,13 @@ app.use(express.static(`${__dirname}/public`));
 //RateLimiting (No of request per minute)
 app.use("/api", limiter);
 
+//Access-Control-Allow-Origin headers to all
+app.use(cors());
+app.options("*", cors());
 //Setting various HTTP headers.
 // app.use(helmet());
 
-// app.use(hpp);
+app.use(hpp);
 
 //Data sanitize againts noSql queries
 app.use(mongoSanitize());
