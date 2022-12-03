@@ -8,11 +8,12 @@ const router = express.Router();
 router.get("/api/v1/forgot-password", viewsController.getForgotPassword);
 router.get("/api/v1/reset-password", viewsController.getResetPassword);
 
-router.use(authController.isLoggedIn);
-
 router.get("/", viewsController.getLogin);
 router.get("/api/v1/login", viewsController.getLogin);
 router.get("/api/v1/signup", viewsController.getSignup);
+
+router.use(authController.isLoggedIn);
+
 router.get("/api/v1/home", viewsController.getPost);
 
 router.get("/api/v1/me", viewsController.getMe);
