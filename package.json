@@ -9,7 +9,7 @@
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file budle.js",
-    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file budle.js"
+    "build": "parcel build ./public/js/index.js --out-dir ./public/js --out-file budle.js"
   },
   "author": "Gaurav bhardwaj",
   "license": "ISC",
