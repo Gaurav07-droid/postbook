@@ -19,6 +19,12 @@ export const login = async (username, password) => {
       window.setTimeout(() => {
         location.assign("/api/v1/home");
       }, 1500);
+    } else {
+      showAlert("error", "Incorrect Email or password!");
+
+      window.setTimeout(() => {
+        location.assign("/api/v1/home");
+      }, 1500);
     }
   } catch (err) {
     // console.log(err);
