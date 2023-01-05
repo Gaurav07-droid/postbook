@@ -21,8 +21,8 @@ export const login = async (username, password) => {
       }, 1500);
     }
   } catch (err) {
-    console.log(err);
-    showAlert("error", err.response.data.message);
+    // console.log(err);
+    showAlert("error", "Something went wrong! Please try after some time.");
   }
 };
 
@@ -112,7 +112,7 @@ export const signup = async (
       }, 1500);
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     showAlert("error", err.response.data.message);
   }
 };
