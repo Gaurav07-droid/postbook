@@ -12,9 +12,8 @@ router.get("/", viewsController.getLogin);
 router.get("/api/v1/login", viewsController.getLogin);
 router.get("/api/v1/signup", viewsController.getSignup);
 
-router.use(authController.isLoggedIn);
-
 router.get("/api/v1/home", viewsController.getPost);
+router.use(authController.isLoggedIn);
 
 router.get("/api/v1/me", viewsController.getMe);
 router.get("/api/v1/my-posts", viewsController.getMyPosts);
